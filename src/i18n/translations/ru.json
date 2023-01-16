@@ -26,6 +26,16 @@
     "numberSelected": "Выбрано {numberSelected}",
     "pressEnterToCreate": "Нажмите клавишу ВВОД, чтобы создать новый вариант, {textInputValue}"
   },
+  "gux-dropdown-tag-value": {
+    "clearSelection": "Очистить выбранные элементы: {numberSelected}"
+  },
+  "gux-dropdown-tag": {
+    "textInputResults": "Начните ввод для фильтрации результатов в раскрывающемся списке",
+    "noSelection": "Выбрать...",
+    "dropdown": "Раскрывающийся список",
+    "numberSelected": "Выбрано {numberSelected}",
+    "pressEnterToCreate": "Нажмите клавишу ВВОД, чтобы создать новый вариант, {textInputValue}"
+  },
   "gux-month-calendar": {
     "changeYear": "Current year is {currentYear}, Click to change year to {changeYear}"
   },

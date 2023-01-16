@@ -26,6 +26,16 @@
     "numberSelected": "{numberSelected} valittu",
     "pressEnterToCreate": "Painamalla Enter voit luoda uuden vaihtoehdon {textInputValue}"
   },
+  "gux-dropdown-tag-value": {
+    "clearSelection": "Tyhjennä {numberSelected} valittua kohdetta"
+  },
+  "gux-dropdown-tag": {
+    "textInputResults": "Kirjoittamalla voit suodattaa avattavan valikon tulokset",
+    "noSelection": "Valitse...",
+    "dropdown": "Avattava valikko",
+    "numberSelected": "{numberSelected} valittu",
+    "pressEnterToCreate": "Painamalla Enter voit luoda uuden vaihtoehdon {textInputValue}"
+  },
   "gux-month-calendar": {
     "changeYear": "Current year is {currentYear}, Click to change year to {changeYear}"
   },

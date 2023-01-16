@@ -39,6 +39,8 @@
  - [gux-dropdown-legacy](../../legacy/gux-dropdown-legacy)
  - [gux-dropdown-multi-beta](../../beta/gux-dropdown-multi)
  - [gux-dropdown-multi-tag](../../beta/gux-dropdown-multi/gux-dropdown-multi-tag)
+ - [gux-dropdown-tag](../../beta/gux-dropdown-tag)
+ - [gux-dropdown-tag-value](../../beta/gux-dropdown-tag/gux-dropdown-tag-value)
  - [gux-error-message-beta](../../beta/gux-error-message-beta)
  - [gux-form-field-checkbox](../gux-form-field/components/gux-form-field-checkbox)
  - [gux-form-field-color](../gux-form-field/components/gux-form-field-color)
@@ -107,6 +109,8 @@ graph TD;
   gux-dropdown-legacy --> gux-icon
   gux-dropdown-multi-beta --> gux-icon
   gux-dropdown-multi-tag --> gux-icon
+  gux-dropdown-tag --> gux-icon
+  gux-dropdown-tag-value --> gux-icon
   gux-error-message-beta --> gux-icon
   gux-form-field-checkbox --> gux-icon
   gux-form-field-color --> gux-icon

@@ -26,6 +26,16 @@
     "numberSelected": "{numberSelected} geselecteerd",
     "pressEnterToCreate": "Druk op Enter om een nieuwe optie te maken, {textInputValue}"
   },
+  "gux-dropdown-tag-value": {
+    "clearSelection": "{numberSelected} geselecteerde items wissen"
+  },
+  "gux-dropdown-tag": {
+    "textInputResults": "Voer tekst in om resultaten in de vervolgkeuzelijst te filteren",
+    "noSelection": "Selecteren...",
+    "dropdown": "Vervolgkeuzelijst",
+    "numberSelected": "{numberSelected} geselecteerd",
+    "pressEnterToCreate": "Druk op Enter om een nieuwe optie te maken, {textInputValue}"
+  },
   "gux-month-calendar": {
     "changeYear": "Current year is {currentYear}, Click to change year to {changeYear}"
   },

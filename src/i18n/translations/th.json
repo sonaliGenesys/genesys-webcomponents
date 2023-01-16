@@ -26,6 +26,16 @@
     "numberSelected": "เลือกแล้ว {numberSelected} รายการ",
     "pressEnterToCreate": "กดปุ่ม Enter เพื่อสร้างตัวเลือกใหม่ {textInputValue}"
   },
+  "gux-dropdown-tag-value": {
+    "clearSelection": "ล้าง {numberSelected} รายการที่เลือกไว้"
+  },
+  "gux-dropdown-tag": {
+    "textInputResults": "พิมพ์เพื่อกรองผลลัพธ์ในดรอปดาวน์",
+    "noSelection": "เลือก...",
+    "dropdown": "ดรอปดาวน์",
+    "numberSelected": "เลือกแล้ว {numberSelected} รายการ",
+    "pressEnterToCreate": "กดปุ่ม Enter เพื่อสร้างตัวเลือกใหม่ {textInputValue}"
+  },
   "gux-month-calendar": {
     "changeYear": "Current year is {currentYear}, Click to change year to {changeYear}"
   },

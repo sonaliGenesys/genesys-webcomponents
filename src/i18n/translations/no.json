@@ -26,6 +26,16 @@
     "numberSelected": "{numberSelected} valgt",
     "pressEnterToCreate": "Trykk på Enter for å opprette nytt alternativ, {textInputValue}"
   },
+  "gux-dropdown-tag-value": {
+    "clearSelection": "Fjern {numberSelected} valgte elementer"
+  },
+  "gux-dropdown-tag": {
+    "textInputResults": "Skriv for å filtrere resultater fra nedtrekkslisten",
+    "noSelection": "Velg ...",
+    "dropdown": "Rullegardinliste",
+    "numberSelected": "{numberSelected} valgt",
+    "pressEnterToCreate": "Trykk på Enter for å opprette nytt alternativ, {textInputValue}"
+  },
   "gux-month-calendar": {
     "changeYear": "Current year is {currentYear}, Click to change year to {changeYear}"
   },

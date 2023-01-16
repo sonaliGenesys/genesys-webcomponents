@@ -26,6 +26,16 @@
     "numberSelected": "{numberSelected} valda",
     "pressEnterToCreate": "Tryck på Retur för att skapa ett nytt alternativ, {textInputValue}"
   },
+  "gux-dropdown-tag-value": {
+    "clearSelection": "Rensa {numberSelected} valda objekt"
+  },
+  "gux-dropdown-tag": {
+    "textInputResults": "Skriv för att filtrera resultatet i listrutan",
+    "noSelection": "Välj...",
+    "dropdown": "Listruta",
+    "numberSelected": "{numberSelected} valda",
+    "pressEnterToCreate": "Tryck på Retur för att skapa ett nytt alternativ, {textInputValue}"
+  },
   "gux-month-calendar": {
     "changeYear": "Current year is {currentYear}, Click to change year to {changeYear}"
   },

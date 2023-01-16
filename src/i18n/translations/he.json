@@ -26,6 +26,16 @@
     "numberSelected": "{numberSelected} נבחרו",
     "pressEnterToCreate": "הקש Enter כדי ליצור אפשרות חדשה, {textInputValue}"
   },
+  "gux-dropdown-tag-value": {
+    "clearSelection": "נקה {numberSelected} פריטים שנבחרו"
+  },
+  "gux-dropdown-tag": {
+    "textInputResults": "הקלד כדי לסנן תוצאות ברשימה נפתחת",
+    "noSelection": "בחר...",
+    "dropdown": "רשימה נפתחת",
+    "numberSelected": "{numberSelected} נבחרו",
+    "pressEnterToCreate": "הקש Enter כדי ליצור אפשרות חדשה, {textInputValue}"
+  },
   "gux-month-calendar": {
     "changeYear": "Current year is {currentYear}, Click to change year to {changeYear}"
   },

@@ -26,6 +26,16 @@
     "numberSelected": "{numberSelected} 件選択",
     "pressEnterToCreate": "Enter キーを押して新しいオプションを作成、{textInputValue}"
   },
+  "gux-dropdown-tag-value": {
+    "clearSelection": "{numberSelected} 件の選択済みアイテムをクリア"
+  },
+  "gux-dropdown-tag": {
+    "textInputResults": "タイプしてドロップダウンの結果をフィルター",
+    "noSelection": "選択する ...",
+    "dropdown": "ドロップダウン",
+    "numberSelected": "{numberSelected} 件選択",
+    "pressEnterToCreate": "Enter キーを押して新しいオプションを作成、{textInputValue}"
+  },
   "gux-month-calendar": {
     "changeYear": "Current year is {currentYear}, Click to change year to {changeYear}"
   },

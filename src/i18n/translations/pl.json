@@ -26,6 +26,16 @@
     "numberSelected": "Wybrane: {numberSelected}",
     "pressEnterToCreate": "Naciśnij klawisz Enter, aby utworzyć nową opcje, {textInputValue}"
   },
+  "gux-dropdown-tag-value": {
+    "clearSelection": "Wyczyść wybrane elementy: {numberSelected}"
+  },
+  "gux-dropdown-tag": {
+    "textInputResults": "Zacznij pisać, aby filtrować wyniki na liście",
+    "noSelection": "Wybierz...",
+    "dropdown": "Lista rozwijana",
+    "numberSelected": "Wybrane: {numberSelected}",
+    "pressEnterToCreate": "Naciśnij klawisz Enter, aby utworzyć nową opcje, {textInputValue}"
+  },
   "gux-month-calendar": {
     "changeYear": "Current year is {currentYear}, Click to change year to {changeYear}"
   },

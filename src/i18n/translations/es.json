@@ -26,6 +26,16 @@
     "numberSelected": "{numberSelected} seleccionado(s)",
     "pressEnterToCreate": "Pulse Intro para crear una nueva opción, {textInputValue}"
   },
+  "gux-dropdown-tag-value": {
+    "clearSelection": "Borrar {numberSelected} elementos seleccionados"
+  },
+  "gux-dropdown-tag": {
+    "textInputResults": "Escriba para filtrar los resultados del desplegable",
+    "noSelection": "Seleccionar...",
+    "dropdown": "Desplegable",
+    "numberSelected": "{numberSelected} seleccionado(s)",
+    "pressEnterToCreate": "Pulse Intro para crear una nueva opción, {textInputValue}"
+  },
   "gux-month-calendar": {
     "changeYear": "Current year is {currentYear}, Click to change year to {changeYear}"
   },

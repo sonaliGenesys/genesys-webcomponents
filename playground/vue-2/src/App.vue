@@ -2,7 +2,7 @@
 
 <template>
   <div id="app" lang="en">
-    <link
+    <!-- <link
       href="http://localhost:8080/genesys-webcomponents/genesys-webcomponents.css"
       rel="stylesheet"
     />
@@ -10,9 +10,9 @@
     <script
       type="module"
       src="http://localhost:8080/genesys-webcomponents/genesys-webcomponents.esm.js"
-    ></script>
+    ></script> -->
 
-    <!-- <link
+    <link
       href="https://dhqbrvplips7x.cloudfront.net/common-ui-docs/genesys-webcomponents/3.41.3-585/genesys-webcomponents/genesys-webcomponents.css"
       rel="stylesheet"
     />
@@ -20,7 +20,7 @@
     <script
       type="module"
       src="https://dhqbrvplips7x.cloudfront.net/common-ui-docs/genesys-webcomponents/3.41.3-585/genesys-webcomponents/genesys-webcomponents.esm.js"
-    ></script> -->
+    ></script>
 
     <Parent />
   </div>

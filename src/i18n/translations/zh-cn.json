@@ -26,6 +26,16 @@
     "numberSelected": "已选择 {numberSelected} 个",
     "pressEnterToCreate": "按 Enter 键创建新选项，{textInputValue}"
   },
+  "gux-dropdown-tag-value": {
+    "clearSelection": "清除 {numberSelected} 个已选项目"
+  },
+  "gux-dropdown-tag": {
+    "textInputResults": "输入以过滤下拉结果",
+    "noSelection": "选择...",
+    "dropdown": "下拉菜单",
+    "numberSelected": "已选择 {numberSelected} 个",
+    "pressEnterToCreate": "按 Enter 键创建新选项，{textInputValue}"
+  },
   "gux-month-calendar": {
     "changeYear": "Current year is {currentYear}, Click to change year to {changeYear}"
   },

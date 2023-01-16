@@ -26,6 +26,16 @@
     "numberSelected": "{numberSelected} selezionato/i",
     "pressEnterToCreate": "Premere Invio per creare una nuova opzione, {textInputValue}"
   },
+  "gux-dropdown-tag-value": {
+    "clearSelection": "Cancella {numberSelected} elementi selezionati"
+  },
+  "gux-dropdown-tag": {
+    "textInputResults": "Digitare per filtrare i risultati dell'elenco a discesa",
+    "noSelection": "Selezionare...",
+    "dropdown": "A discesa",
+    "numberSelected": "{numberSelected} selezionato/i",
+    "pressEnterToCreate": "Premere Invio per creare una nuova opzione, {textInputValue}"
+  },
   "gux-month-calendar": {
     "changeYear": "Current year is {currentYear}, Click to change year to {changeYear}"
   },

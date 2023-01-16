@@ -26,6 +26,16 @@
     "numberSelected": "تم تحديد {numberSelected}",
     "pressEnterToCreate": "اضغط \"دخول\" لإنشاء خيار جديد، {textInputValue}"
   },
+  "gux-dropdown-tag-value": {
+    "clearSelection": "مسح {numberSelected} من العناصر المحددة"
+  },
+  "gux-dropdown-tag": {
+    "textInputResults": "اكتب لتصفية نتائج القائمة المنسدلة",
+    "noSelection": "تحديد...",
+    "dropdown": "قائمة منسدلة",
+    "numberSelected": "تم تحديد {numberSelected}",
+    "pressEnterToCreate": "اضغط \"دخول\" لإنشاء خيار جديد، {textInputValue}"
+  },
   "gux-month-calendar": {
     "changeYear": "Current year is {currentYear}, Click to change year to {changeYear}"
   },

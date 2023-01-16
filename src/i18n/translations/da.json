@@ -26,6 +26,16 @@
     "numberSelected": "{numberSelected} valgt",
     "pressEnterToCreate": "Tryk på Enter for at oprette en ny valgmulighed, {textInputValue}"
   },
+  "gux-dropdown-tag-value": {
+    "clearSelection": "Ryd {numberSelected} valgte elementer"
+  },
+  "gux-dropdown-tag": {
+    "textInputResults": "Indtast for at filtrere rullelisteresultater",
+    "noSelection": "Vælg...",
+    "dropdown": "Rullemenu",
+    "numberSelected": "{numberSelected} valgt",
+    "pressEnterToCreate": "Tryk på Enter for at oprette en ny valgmulighed, {textInputValue}"
+  },
   "gux-month-calendar": {
     "changeYear": "Current year is {currentYear}, Click to change year to {changeYear}"
   },
