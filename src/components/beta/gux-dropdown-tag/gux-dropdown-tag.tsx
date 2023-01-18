@@ -215,16 +215,32 @@ export class GuxDropdownMulti {
   /**
    * clear selected options when gux-dropdown-multi-tag emits event
    */
-  @Listen('internalclearselected')
+  // @Listen('internalclearselected')
+
+  @Listen('tagCloseClicked')
   onClearselected(event: CustomEvent): void {
     event.stopPropagation();
 
-    this.updateValue('');
+    const values = this.value;
+    const clearValue: string = event.detail;
+    if (values && values[values.length - 1] === clearValue) {
+      this.value = values.replace(clearValue, '');
+    } else {
+      this.value = values.replace(clearValue + ',', '');
+    }
+
+    this.updateValue(this.value);
     if (this.listboxElement) {
-      this.listboxElement.value = undefined;
+      this.listboxElement.value = this.value;
     }
     this.validateValue(this.value);
-    this.fieldButtonElement.focus();
+
+    // window.console.log("Hiiiiiiiii this.value = ",this.value);
+    if (this.value === undefined || this.value === '') {
+      this.expanded = !this.expanded;
+
+      this.fieldButtonElement.focus();
+    }
   }
 
   /**
@@ -317,6 +333,29 @@ export class GuxDropdownMulti {
       this.root.querySelectorAll('gux-option-multi')
     );
     const values = value ? value.split(',') : undefined;
+    if (values) {
+      return listboxOptionElements.filter(element =>
+        values.includes(element.value)
+      );
+    }
+    return;
+  }
+
+  private removeOptionElementByValue(value: string): HTMLGuxOptionElement[] {
+    const listboxOptionElements = Array.from(
+      this.root.querySelectorAll('gux-option-multi')
+    );
+
+    window.console.log('listboxOptionElements = ', listboxOptionElements);
+
+    window.console.log('values = ', value);
+
+    const values = value ? value.split(',') : undefined;
+
+    window.console.log('values = ', values);
+
+    // listboxOptionElements.filter(element => element.textContent != value);
+
     if (values) {
       return listboxOptionElements.filter(element =>
         values.includes(element.value)
@@ -455,27 +494,6 @@ export class GuxDropdownMulti {
         </span>
       ) as JSX.Element;
     }
-
-    // window.console.log('Selected Options == ', selectedListboxOptionElement);
-
-    // if (selectedListboxOptionElement?.length) {
-
-    //   const optionsValue = [];
-    // for (const product of selectedListboxOptionElement) {
-    //   optionsValue.push(
-    //     <span class="gux-sr-only">
-    //       {this.i18n('numberSelected', {
-    //         numberSelected: product.textContent
-    //       })}
-    //     </span>
-    //     );
-    //   console.log(product.textContent);
-    // }
-
-    //   return (
-    //     {optionsValue}
-    //   ) as JSX.Element;
-    // }
   }
 
   private getInputAriaLabel(): string {
@@ -498,6 +516,7 @@ export class GuxDropdownMulti {
           <gux-dropdown-tag-value
             disabled={this.disabled}
             option-selected={product.textContent}
+            value={product.value}
           ></gux-dropdown-tag-value>
         );
       }

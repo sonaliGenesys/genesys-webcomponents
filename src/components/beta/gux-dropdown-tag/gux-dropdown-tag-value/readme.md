@@ -12,6 +12,7 @@
 | `disabled`       | `disabled`        | Tag is removable. | `boolean` | `false` |
 | `numberSelected` | `number-selected` |                   | `number`  | `0`     |
 | `optionSelected` | `option-selected` |                   | `string`  | `''`    |
+| `value`          | `value`           |                   | `string`  | `''`    |
 
 
 ## Events
@@ -19,6 +20,7 @@
 | Event                   | Description                           | Type                  |
 | ----------------------- | ------------------------------------- | --------------------- |
 | `internalclearselected` | Triggered when click on remove button | `CustomEvent<string>` |
+| `tagCloseClicked`       |                                       | `CustomEvent<string>` |
 
 
 ## Dependencies

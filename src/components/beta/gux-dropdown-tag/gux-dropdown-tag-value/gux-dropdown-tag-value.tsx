@@ -30,6 +30,9 @@ export class GuxDropdownMultiTag {
   @Event()
   internalclearselected: EventEmitter<string>;
 
+  @Event()
+  tagCloseClicked: EventEmitter<string>;
+
   /**
    * Tag is removable.
    */
@@ -38,6 +41,9 @@ export class GuxDropdownMultiTag {
 
   @Prop()
   numberSelected: number = 0;
+
+  @Prop()
+  value: string = '';
 
   @Prop()
   optionSelected: string = '';
@@ -54,6 +60,11 @@ export class GuxDropdownMultiTag {
     }
   }
 
+  private handleTagCloseClick(e: MouseEvent) {
+    e.stopPropagation();
+    this.tagCloseClicked.emit(this.value);
+  }
+
   private removeTag(): void {
     if (this.disabled) {
       return;
@@ -65,7 +76,7 @@ export class GuxDropdownMultiTag {
     return (
       <button
         class="gux-tag-remove-button"
-        onClick={this.removeTag.bind(this)}
+        onClick={event => this.handleTagCloseClick(event)}
         type="button"
         disabled={this.disabled}
       >
@@ -73,7 +84,7 @@ export class GuxDropdownMultiTag {
           class="gux-tag-remove-icon"
           icon-name="close"
           screenreader-text={this.i18n('clearSelection', {
-            numberSelected: this.numberSelected.toString()
+            numberSelected: this.optionSelected.toString()
           })}
         />
       </button>
@@ -93,7 +104,7 @@ export class GuxDropdownMultiTag {
         }}
         aria-disabled={this.disabled.toString()}
       >
-        {this.optionSelected.toString()}
+        {this.optionSelected}
         {this.renderRemoveButton()}
       </div>
     ) as JSX.Element;
