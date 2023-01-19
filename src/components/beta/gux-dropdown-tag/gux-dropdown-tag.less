@@ -10,6 +10,8 @@
 
 .gux-dropdown-container {
   position: relative;
+  display: flex;
+  overflow-x: auto;
 }
 
 .gux-error {
@@ -29,9 +31,13 @@
   align-content: stretch;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  // min-width: 16px;
+  width: 200px;
   height: 32px;
+  // min-height: 32px;
+  // max-height: 64px;
   padding: 6px 0 6px 6px;
+  overflow-y: scroll;
   font-family: inherit;
   font-size: 12px;
   line-height: 1.6667;

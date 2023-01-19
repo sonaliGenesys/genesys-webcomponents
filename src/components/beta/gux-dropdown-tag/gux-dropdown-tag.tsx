@@ -237,8 +237,7 @@ export class GuxDropdownMulti {
 
     // window.console.log("Hiiiiiiiii this.value = ",this.value);
     if (this.value === undefined || this.value === '') {
-      this.expanded = !this.expanded;
-
+      if (!this.expanded) this.expanded = !this.expanded;
       this.fieldButtonElement.focus();
     }
   }
@@ -333,29 +332,6 @@ export class GuxDropdownMulti {
       this.root.querySelectorAll('gux-option-multi')
     );
     const values = value ? value.split(',') : undefined;
-    if (values) {
-      return listboxOptionElements.filter(element =>
-        values.includes(element.value)
-      );
-    }
-    return;
-  }
-
-  private removeOptionElementByValue(value: string): HTMLGuxOptionElement[] {
-    const listboxOptionElements = Array.from(
-      this.root.querySelectorAll('gux-option-multi')
-    );
-
-    window.console.log('listboxOptionElements = ', listboxOptionElements);
-
-    window.console.log('values = ', value);
-
-    const values = value ? value.split(',') : undefined;
-
-    window.console.log('values = ', values);
-
-    // listboxOptionElements.filter(element => element.textContent != value);
-
     if (values) {
       return listboxOptionElements.filter(element =>
         values.includes(element.value)
@@ -612,7 +588,7 @@ export class GuxDropdownMulti {
     ) as JSX.Element;
   }
   private renderTargetContent(): JSX.Element {
-    if (!(this.expanded && this.hasTextInput())) {
+    if (!(this.expanded && this.hasTextInput()) && !this.value) {
       return (
         <div class="gux-field-content">{this.renderTargetDisplay()}</div>
       ) as JSX.Element;
