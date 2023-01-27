@@ -24,6 +24,7 @@ import translationResources from './i18n/en.json';
 
 import { getSearchOption } from '../../stable/gux-listbox/gux-listbox.service';
 import { GuxFilterTypes } from '../../stable/gux-dropdown/gux-dropdown.types';
+
 /**
  * @slot - for a gux-listbox-multi containing gux-option-multi children
  */
@@ -215,31 +216,27 @@ export class GuxDropdownMulti {
   /**
    * clear selected options when gux-dropdown-multi-tag emits event
    */
-  // @Listen('internalclearselected')
-
   @Listen('tagCloseClicked')
   onClearselected(event: CustomEvent): void {
     event.stopPropagation();
 
-    const values = this.value;
     const clearValue: string = event.detail;
-    if (values && values[values.length - 1] === clearValue) {
-      this.value = values.replace(clearValue, '');
-    } else {
-      this.value = values.replace(clearValue + ',', '');
-    }
+    this.value = this.removeValue(this.value, clearValue);
 
     this.updateValue(this.value);
     if (this.listboxElement) {
       this.listboxElement.value = this.value;
     }
-    this.validateValue(this.value);
+    this.expanded = this.value ? true : false;
+  }
 
-    // window.console.log("Hiiiiiiiii this.value = ",this.value);
-    if (this.value === undefined || this.value === '') {
-      if (!this.expanded) this.expanded = !this.expanded;
-      this.fieldButtonElement.focus();
-    }
+  removeValue(value: string, clearValue: string): string {
+    const arrayElements = value.split(',');
+    const index = arrayElements.indexOf(clearValue);
+
+    if (index !== -1) arrayElements.splice(index, 1);
+
+    return arrayElements.toString();
   }
 
   /**
@@ -478,7 +475,7 @@ export class GuxDropdownMulti {
       : this.i18n('textInputResults');
   }
 
-  private renderTag(): JSX.Element {
+  private renderTag(): JSX.Element[] {
     const selectedListboxOptionElement = this.getOptionElementByValue(
       this.value
     );
@@ -486,8 +483,6 @@ export class GuxDropdownMulti {
     if (selectedListboxOptionElement?.length) {
       const optionsValue = [];
       for (const product of selectedListboxOptionElement) {
-        console.log('Hi.. I am renderTag = ', product.textContent);
-
         optionsValue.push(
           <gux-dropdown-tag-value
             disabled={this.disabled}
@@ -497,17 +492,8 @@ export class GuxDropdownMulti {
         );
       }
 
-      return (<div>{optionsValue}</div>) as JSX.Element;
+      return optionsValue as JSX.Element[];
     }
-
-    // if (selectedListboxOptionElement?.length) {
-    //   return (
-    //     <gux-dropdown-tag-value
-    //       disabled={this.disabled}
-    //       number-selected={selectedListboxOptionElement.length}
-    //     ></gux-dropdown-tag-value>
-    //   ) as JSX.Element;
-    // }
   }
 
   private renderFilterInputField(): JSX.Element {
@@ -574,7 +560,6 @@ export class GuxDropdownMulti {
           aria-expanded={this.expanded.toString()}
         >
           {this.renderTargetContent()}
-          {this.renderTag()}
           {this.renderRadialLoading()}
           <gux-icon
             class={{
@@ -588,9 +573,11 @@ export class GuxDropdownMulti {
     ) as JSX.Element;
   }
   private renderTargetContent(): JSX.Element {
-    if (!(this.expanded && this.hasTextInput()) && !this.value) {
+    if (!(this.expanded && this.hasTextInput())) {
       return (
-        <div class="gux-field-content">{this.renderTargetDisplay()}</div>
+        <div class="gux-field-content">
+          {this.value ? this.renderTag() : this.renderTargetDisplay()}
+        </div>
       ) as JSX.Element;
     }
   }

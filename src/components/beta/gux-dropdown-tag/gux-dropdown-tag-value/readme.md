@@ -17,10 +17,11 @@
 
 ## Events
 
-| Event                   | Description                           | Type                  |
-| ----------------------- | ------------------------------------- | --------------------- |
-| `internalclearselected` | Triggered when click on remove button | `CustomEvent<string>` |
-| `tagCloseClicked`       |                                       | `CustomEvent<string>` |
+| Event                   | Description                             | Type                  |
+| ----------------------- | --------------------------------------- | --------------------- |
+| `internalclearselected` | Triggered when click on remove button   | `CustomEvent<string>` |
+| `tagClicked`            | Fired when tag is clicked.              | `CustomEvent<string>` |
+| `tagCloseClicked`       | Fired when tag close button is clicked. | `CustomEvent<string>` |
 
 
 ## Dependencies

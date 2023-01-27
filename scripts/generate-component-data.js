@@ -119,24 +119,24 @@ function mdTableToArray(tableMd) {
   let table = [];
 
   marked(tableMd, {
-    renderer: {
-      table(header, body) {},
-      tablerow(content) {
-        table.push(cur_row);
-        cur_row = [];
-      },
-      tablecell(content, flags) {
-        if (!flags.header) {
-          cur_row.push(content);
-        }
-      },
-      codespan(text) {
-        return text;
-      },
-      text(text) {
-        return text;
-      }
-    }
+    // renderer: {
+    //   table(header, body) {},
+    //   tablerow(content) {
+    //     table.push(cur_row);
+    //     cur_row = [];
+    //   },
+    //   tablecell(content, flags) {
+    //     if (!flags.header) {
+    //       cur_row.push(content);
+    //     }
+    //   },
+    //   codespan(text) {
+    //     return text;
+    //   },
+    //   text(text) {
+    //     return text;
+    //   }
+    // }
   });
 
   return table.filter(e => {

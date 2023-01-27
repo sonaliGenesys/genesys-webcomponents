@@ -6,11 +6,13 @@
 
 :host {
   color: @gux-black-50;
+  // width: 500px;
 }
 
 .gux-dropdown-container {
   position: relative;
   display: flex;
+  width: 300px;
   overflow-x: auto;
 }
 
@@ -32,8 +34,8 @@
   align-items: center;
   justify-content: center;
   // min-width: 16px;
-  width: 200px;
-  height: 32px;
+  width: 300px;
+  min-height: 40px;
   // min-height: 32px;
   // max-height: 64px;
   padding: 6px 0 6px 6px;
@@ -53,10 +55,7 @@
 
   .gux-field-content {
     position: relative;
-    display: flex;
     flex: 1 1 0;
-    flex-direction: row;
-    flex-wrap: nowrap;
     align-content: stretch;
     align-items: flex-start;
     justify-content: flex-start;
@@ -115,6 +114,7 @@
 
   .gux-expand-icon {
     flex: 0 0 auto;
+    align-items: top;
     align-self: auto;
     order: 0;
     width: 16px;

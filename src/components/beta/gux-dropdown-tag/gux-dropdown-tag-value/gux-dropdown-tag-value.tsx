@@ -30,8 +30,8 @@ export class GuxDropdownMultiTag {
   @Event()
   internalclearselected: EventEmitter<string>;
 
-  @Event()
-  tagCloseClicked: EventEmitter<string>;
+  // @Event()
+  // tagCloseClicked: EventEmitter<string>;
 
   /**
    * Tag is removable.
@@ -51,6 +51,18 @@ export class GuxDropdownMultiTag {
   @State()
   label: string = '';
 
+  /**
+   * Fired when tag is clicked.
+   */
+  @Event()
+  tagClicked: EventEmitter<string>;
+
+  /**
+   * Fired when tag close button is clicked.
+   */
+  @Event()
+  tagCloseClicked: EventEmitter<string>;
+
   @Listen('keydown')
   onKeyDown(event: KeyboardEvent): void {
     switch (event.key) {
@@ -60,23 +72,18 @@ export class GuxDropdownMultiTag {
     }
   }
 
-  private handleTagCloseClick(e: MouseEvent) {
-    e.stopPropagation();
-    this.tagCloseClicked.emit(this.value);
-  }
-
   private removeTag(): void {
     if (this.disabled) {
       return;
     }
-    this.internalclearselected.emit();
+    this.tagCloseClicked.emit(this.value);
   }
 
   private renderRemoveButton(): JSX.Element {
     return (
       <button
         class="gux-tag-remove-button"
-        onClick={event => this.handleTagCloseClick(event)}
+        onClick={this.removeTag.bind(this)}
         type="button"
         disabled={this.disabled}
       >
@@ -84,7 +91,7 @@ export class GuxDropdownMultiTag {
           class="gux-tag-remove-icon"
           icon-name="close"
           screenreader-text={this.i18n('clearSelection', {
-            numberSelected: this.optionSelected.toString()
+            numberSelected: this.numberSelected.toString()
           })}
         />
       </button>
