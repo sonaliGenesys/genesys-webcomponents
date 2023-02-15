@@ -23,7 +23,6 @@ import { trackComponent } from '../../../usage-tracking';
 import translationResources from './i18n/en.json';
 
 import { getSearchOption } from '../../stable/gux-listbox/gux-listbox.service';
-import { GuxFilterTypes } from '../../stable/gux-dropdown/gux-dropdown.types';
 
 /**
  * @slot - for a gux-listbox-multi containing gux-option-multi children
@@ -33,7 +32,7 @@ import { GuxFilterTypes } from '../../stable/gux-dropdown/gux-dropdown.types';
   tag: 'gux-dropdown-tag',
   shadow: true
 })
-export class GuxDropdownMulti {
+export class GuxDropdownTag {
   private i18n: GetI18nValue;
   private fieldButtonElement: HTMLElement;
   private textInputElement: HTMLInputElement;
@@ -57,18 +56,6 @@ export class GuxDropdownMulti {
   @Prop()
   placeholder: string;
 
-  /**
-   * deprecated will be removed in v4 (COMUI-1369). Use filterType instead
-   */
-  @Prop()
-  filterable: boolean = false;
-
-  /**
-   * Override default filtering behavior
-   */
-  @Prop()
-  filterType: GuxFilterTypes = 'none';
-
   @Prop()
   hasError: boolean = false;
 
@@ -80,6 +67,9 @@ export class GuxDropdownMulti {
 
   @State()
   private textInput: string = '';
+
+  @Prop()
+  selectionLimit: number;
 
   /**
    * This event is emitted to request creating a new option
@@ -98,9 +88,6 @@ export class GuxDropdownMulti {
    */
   @Event()
   guxcollapsed: EventEmitter<void>;
-
-  @Event()
-  private guxfilter: EventEmitter<string>;
 
   /**
    * Listens for expanded event emitted by gux-popup.
@@ -137,6 +124,27 @@ export class GuxDropdownMulti {
     }
   }
 
+  @Watch('selectionLimit')
+  validateSelectionLimit() {
+    console.log('selectionLimit = ', this.selectionLimit);
+
+    const values = this.value ? this.value.split(',') : undefined;
+
+    if (this.selectionLimit === values.length) {
+      const listboxOptionElements = Array.from(
+        this.root.querySelectorAll('gux-option-multi')
+      );
+
+      if (values) {
+        const y = listboxOptionElements.filter(
+          element => !values.includes(element.value)
+        );
+        console.log('Selected options = ', y);
+        y.forEach(element => element.setAttribute('disabled', 'true'));
+      }
+    }
+  }
+
   @Watch('value')
   validateValue(newValue: string) {
     if (newValue === undefined) {
@@ -154,11 +162,6 @@ export class GuxDropdownMulti {
     }
 
     this.value = undefined;
-  }
-
-  @Watch('textInput')
-  handleFilter(filter: string) {
-    this.guxfilter.emit(filter);
   }
 
   /**
@@ -302,20 +305,11 @@ export class GuxDropdownMulti {
   componentWillRender(): void {
     this.validateValue(this.value);
     this.listboxElement.loading = this.loading;
-    this.listboxElement.filterType = this.filterType;
     this.listboxElement.textInput = this.textInput;
   }
 
   private hasTextInput(): boolean {
-    return this.isFilterable() || this.hasCreate;
-  }
-
-  private isFilterable(): boolean {
-    return (
-      this.filterable ||
-      this.filterType === 'custom' ||
-      this.filterType === 'starts-with'
-    );
+    return this.hasCreate;
   }
 
   private stopPropagationOfInternalFocusEvents(event: FocusEvent): void {
@@ -328,6 +322,7 @@ export class GuxDropdownMulti {
     const listboxOptionElements = Array.from(
       this.root.querySelectorAll('gux-option-multi')
     );
+
     const values = value ? value.split(',') : undefined;
     if (values) {
       return listboxOptionElements.filter(element =>
@@ -427,13 +422,14 @@ export class GuxDropdownMulti {
       simulateNativeEvent(this.root, 'input');
       simulateNativeEvent(this.root, 'change');
     }
+    this.validateSelectionLimit();
   }
 
   private getTypeaheadText(textInput: string): string {
     const textInputLength = textInput.length;
     if (textInputLength > 0 && !this.loading) {
       const option = getSearchOption(this.listboxElement, textInput);
-      if (option && this.filterType !== 'custom') {
+      if (option) {
         const optionSlotTextContent = option.querySelector(
           '[gux-slot-container]'
         )?.textContent;
@@ -448,25 +444,8 @@ export class GuxDropdownMulti {
     return (
       <div class="gux-placeholder">
         {this.placeholder || this.i18n('noSelection')}
-        {this.getSrSelectedText()}
       </div>
     ) as JSX.Element;
-  }
-
-  private getSrSelectedText(): JSX.Element {
-    const selectedListboxOptionElement = this.getOptionElementByValue(
-      this.value
-    );
-
-    if (selectedListboxOptionElement?.length) {
-      return (
-        <span class="gux-sr-only">
-          {this.i18n('numberSelected', {
-            numberSelected: selectedListboxOptionElement.length.toString()
-          })}
-        </span>
-      ) as JSX.Element;
-    }
   }
 
   private getInputAriaLabel(): string {
@@ -594,8 +573,9 @@ export class GuxDropdownMulti {
     return [
       <div class="gux-dropdown-container">
         <gux-popup
-          expanded={this.expanded && (!this.loading || this.isFilterable())}
+          expanded={this.expanded && !this.loading}
           disabled={this.disabled}
+          selection-limit={this.selectionLimit}
         >
           {this.renderTarget()}
           {this.renderPopup()}

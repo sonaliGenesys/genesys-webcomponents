@@ -47,7 +47,7 @@
     "pressEnterToCreate": "Press Enter to create new option, {textInputValue}"
   },
   "gux-dropdown-tag-value": {
-    "clearSelection": "Clear {numberSelected} selected items"
+    "clearSelection": "Clear selected item - {optionSelected} "
   },
   "gux-dropdown-tag": {
     "textInputResults": "Type to filter dropdown results",

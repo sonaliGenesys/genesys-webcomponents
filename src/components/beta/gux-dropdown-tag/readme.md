@@ -5,26 +5,24 @@
 
 ## Properties
 
-| Property      | Attribute     | Description                                                           | Type                                  | Default     |
-| ------------- | ------------- | --------------------------------------------------------------------- | ------------------------------------- | ----------- |
-| `disabled`    | `disabled`    |                                                                       | `boolean`                             | `false`     |
-| `filterType`  | `filter-type` | Override default filtering behavior                                   | `"custom" \| "none" \| "starts-with"` | `'none'`    |
-| `filterable`  | `filterable`  | deprecated will be removed in v4 (COMUI-1369). Use filterType instead | `boolean`                             | `false`     |
-| `hasError`    | `has-error`   |                                                                       | `boolean`                             | `false`     |
-| `loading`     | `loading`     |                                                                       | `boolean`                             | `false`     |
-| `placeholder` | `placeholder` |                                                                       | `string`                              | `undefined` |
-| `required`    | `required`    |                                                                       | `boolean`                             | `false`     |
-| `value`       | `value`       |                                                                       | `string`                              | `undefined` |
+| Property         | Attribute         | Description | Type      | Default     |
+| ---------------- | ----------------- | ----------- | --------- | ----------- |
+| `disabled`       | `disabled`        |             | `boolean` | `false`     |
+| `hasError`       | `has-error`       |             | `boolean` | `false`     |
+| `loading`        | `loading`         |             | `boolean` | `false`     |
+| `placeholder`    | `placeholder`     |             | `string`  | `undefined` |
+| `required`       | `required`        |             | `boolean` | `false`     |
+| `selectionLimit` | `selection-limit` |             | `number`  | `undefined` |
+| `value`          | `value`           |             | `string`  | `undefined` |
 
 
 ## Events
 
-| Event             | Description                                                                   | Type                  |
-| ----------------- | ----------------------------------------------------------------------------- | --------------------- |
-| `guxcollapsed`    | This event will run when the dropdown-multi transitions to a collapsed state. | `CustomEvent<void>`   |
-| `guxcreateoption` | This event is emitted to request creating a new option                        | `CustomEvent<any>`    |
-| `guxexpanded`     | This event will run when the dropdown-multi transitions to an expanded state. | `CustomEvent<void>`   |
-| `guxfilter`       |                                                                               | `CustomEvent<string>` |
+| Event             | Description                                                                   | Type                |
+| ----------------- | ----------------------------------------------------------------------------- | ------------------- |
+| `guxcollapsed`    | This event will run when the dropdown-multi transitions to a collapsed state. | `CustomEvent<void>` |
+| `guxcreateoption` | This event is emitted to request creating a new option                        | `CustomEvent<any>`  |
+| `guxexpanded`     | This event will run when the dropdown-multi transitions to an expanded state. | `CustomEvent<void>` |
 
 
 ## Methods

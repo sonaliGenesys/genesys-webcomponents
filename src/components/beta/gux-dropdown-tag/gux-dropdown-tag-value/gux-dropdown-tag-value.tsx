@@ -39,8 +39,8 @@ export class GuxDropdownMultiTag {
   @Prop()
   disabled: boolean = false;
 
-  @Prop()
-  numberSelected: number = 0;
+  // @Prop()
+  // numberSelected: number = 0;
 
   @Prop()
   value: string = '';
@@ -91,7 +91,7 @@ export class GuxDropdownMultiTag {
           class="gux-tag-remove-icon"
           icon-name="close"
           screenreader-text={this.i18n('clearSelection', {
-            numberSelected: this.numberSelected.toString()
+            optionSelected: this.optionSelected.toString()
           })}
         />
       </button>

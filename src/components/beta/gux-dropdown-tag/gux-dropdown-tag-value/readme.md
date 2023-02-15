@@ -10,7 +10,6 @@
 | Property         | Attribute         | Description       | Type      | Default |
 | ---------------- | ----------------- | ----------------- | --------- | ------- |
 | `disabled`       | `disabled`        | Tag is removable. | `boolean` | `false` |
-| `numberSelected` | `number-selected` |                   | `number`  | `0`     |
 | `optionSelected` | `option-selected` |                   | `string`  | `''`    |
 | `value`          | `value`           |                   | `string`  | `''`    |
 
