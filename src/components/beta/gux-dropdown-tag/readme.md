@@ -5,24 +5,26 @@
 
 ## Properties
 
-| Property         | Attribute         | Description | Type      | Default     |
-| ---------------- | ----------------- | ----------- | --------- | ----------- |
-| `disabled`       | `disabled`        |             | `boolean` | `false`     |
-| `hasError`       | `has-error`       |             | `boolean` | `false`     |
-| `loading`        | `loading`         |             | `boolean` | `false`     |
-| `placeholder`    | `placeholder`     |             | `string`  | `undefined` |
-| `required`       | `required`        |             | `boolean` | `false`     |
-| `selectionLimit` | `selection-limit` |             | `number`  | `undefined` |
-| `value`          | `value`           |             | `string`  | `undefined` |
+| Property      | Attribute     | Description                                                           | Type                                  | Default     |
+| ------------- | ------------- | --------------------------------------------------------------------- | ------------------------------------- | ----------- |
+| `disabled`    | `disabled`    |                                                                       | `boolean`                             | `false`     |
+| `filterType`  | `filter-type` | Override default filtering behavior                                   | `"custom" \| "none" \| "starts-with"` | `'none'`    |
+| `filterable`  | `filterable`  | deprecated will be removed in v4 (COMUI-1369). Use filterType instead | `boolean`                             | `false`     |
+| `hasError`    | `has-error`   |                                                                       | `boolean`                             | `false`     |
+| `loading`     | `loading`     |                                                                       | `boolean`                             | `false`     |
+| `placeholder` | `placeholder` |                                                                       | `string`                              | `undefined` |
+| `required`    | `required`    |                                                                       | `boolean`                             | `false`     |
+| `value`       | `value`       |                                                                       | `string`                              | `undefined` |
 
 
 ## Events
 
-| Event             | Description                                                                   | Type                |
-| ----------------- | ----------------------------------------------------------------------------- | ------------------- |
-| `guxcollapsed`    | This event will run when the dropdown-multi transitions to a collapsed state. | `CustomEvent<void>` |
-| `guxcreateoption` | This event is emitted to request creating a new option                        | `CustomEvent<any>`  |
-| `guxexpanded`     | This event will run when the dropdown-multi transitions to an expanded state. | `CustomEvent<void>` |
+| Event             | Description                                                                   | Type                  |
+| ----------------- | ----------------------------------------------------------------------------- | --------------------- |
+| `guxcollapsed`    | This event will run when the dropdown-multi transitions to a collapsed state. | `CustomEvent<void>`   |
+| `guxcreateoption` | This event is emitted to request creating a new option                        | `CustomEvent<any>`    |
+| `guxexpanded`     | This event will run when the dropdown-multi transitions to an expanded state. | `CustomEvent<void>`   |
+| `guxfilter`       |                                                                               | `CustomEvent<string>` |
 
 
 ## Methods
@@ -50,6 +52,7 @@ Type: `Promise<string[]>`
 ### Depends on
 
 - [gux-dropdown-tag-value](gux-dropdown-tag-value)
+- [gux-form-field-search](../../stable/gux-form-field/components/gux-form-field-search)
 - [gux-icon](../../stable/gux-icon)
 - [gux-radial-loading](../../stable/gux-radial-loading)
 - [gux-popup](../../stable/gux-popup)
@@ -58,10 +61,14 @@ Type: `Promise<string[]>`
 ```mermaid
 graph TD;
   gux-dropdown-tag --> gux-dropdown-tag-value
+  gux-dropdown-tag --> gux-form-field-search
   gux-dropdown-tag --> gux-icon
   gux-dropdown-tag --> gux-radial-loading
   gux-dropdown-tag --> gux-popup
   gux-dropdown-tag-value --> gux-icon
+  gux-form-field-search --> gux-icon
+  gux-form-field-search --> gux-form-field-input-clear-button
+  gux-form-field-input-clear-button --> gux-icon
   style gux-dropdown-tag fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

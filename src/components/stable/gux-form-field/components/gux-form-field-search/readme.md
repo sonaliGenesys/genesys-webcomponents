@@ -40,6 +40,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [gux-advanced-dropdown](../../../gux-advanced-dropdown)
+ - [gux-dropdown-tag](../../../../beta/gux-dropdown-tag)
 
 ### Depends on
 
@@ -53,6 +54,7 @@ graph TD;
   gux-form-field-search --> gux-form-field-input-clear-button
   gux-form-field-input-clear-button --> gux-icon
   gux-advanced-dropdown --> gux-form-field-search
+  gux-dropdown-tag --> gux-form-field-search
   style gux-form-field-search fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

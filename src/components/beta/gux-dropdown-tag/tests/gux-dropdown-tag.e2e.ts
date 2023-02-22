@@ -194,152 +194,152 @@ describe('gux-dropdown-tag', () => {
       expect(selectedItems.length).toBe(1);
     });
   });
-  // describe('filter', () => {
-  //   // remove filterable example in V4 (COMUI-1369)
-  //   it('filters dropdown contents (filterable)', async () => {
-  //     const filterableDropdown = `
-  //     <gux-dropdown-tag filterable lang="en">
-  //       <gux-listbox-multi aria-label="Animals">
-  //         <gux-option-multi value="ant">Ant</gux-option-multi>
-  //         <gux-option-multi value="bear">Bear</gux-option-multi>
-  //         <gux-option-multi value="bat">Bat</gux-option-multi>
-  //         <gux-option-multi value="cat">Cat</gux-option-multi>
-  //         <gux-option-multi value="dog">Dog</gux-option-multi>
-  //       </gux-listbox-multi>
-  //     </gux-dropdown-tag>
-  //   `;
-  //     const page = await newSparkE2EPage({ html: filterableDropdown });
-  //     await page.waitForChanges();
-  //     const dropdownButtonElement = await page.find('pierce/.gux-field');
-  //     await dropdownButtonElement.click();
-  //     await page.waitForChanges();
+  describe('filter', () => {
+    // remove filterable example in V4 (COMUI-1369)
+    it('filters dropdown contents (filterable)', async () => {
+      const filterableDropdown = `
+      <gux-dropdown-tag filterable lang="en">
+        <gux-listbox-multi aria-label="Animals">
+          <gux-option-multi value="ant">Ant</gux-option-multi>
+          <gux-option-multi value="bear">Bear</gux-option-multi>
+          <gux-option-multi value="bat">Bat</gux-option-multi>
+          <gux-option-multi value="cat">Cat</gux-option-multi>
+          <gux-option-multi value="dog">Dog</gux-option-multi>
+        </gux-listbox-multi>
+      </gux-dropdown-tag>
+    `;
+      const page = await newSparkE2EPage({ html: filterableDropdown });
+      await page.waitForChanges();
+      const dropdownButtonElement = await page.find('pierce/.gux-field');
+      await dropdownButtonElement.click();
+      await page.waitForChanges();
 
-  //     let listboxItems = await page.findAll(
-  //       'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
-  //     );
+      let listboxItems = await page.findAll(
+        'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
+      );
 
-  //     expect(listboxItems.length).toBe(5);
-  //     await page.keyboard.press('b');
-  //     await page.waitForChanges();
+      expect(listboxItems.length).toBe(5);
+      await page.keyboard.press('b');
+      await page.waitForChanges();
 
-  //     listboxItems = await page.findAll(
-  //       'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
-  //     );
-  //     expect(listboxItems.length).toBe(2);
-  //     expect(listboxItems[0].textContent).toEqual('Bear');
-  //   });
-  //   it('filters dropdown contents (filter-type starts-with)', async () => {
-  //     const filterableDropdown = `
-  //     <gux-dropdown-tag filter-type="starts-with" lang="en">
-  //       <gux-listbox-multi aria-label="Animals">
-  //         <gux-option-multi value="ant">Ant</gux-option-multi>
-  //         <gux-option-multi value="bear">Bear</gux-option-multi>
-  //         <gux-option-multi value="bat">Bat</gux-option-multi>
-  //         <gux-option-multi value="cat">Cat</gux-option-multi>
-  //         <gux-option-multi value="dog">Dog</gux-option-multi>
-  //       </gux-listbox-multi>
-  //     </gux-dropdown-tag>
-  //   `;
-  //     const page = await newSparkE2EPage({ html: filterableDropdown });
-  //     await page.waitForChanges();
-  //     const dropdownButtonElement = await page.find('pierce/.gux-field');
-  //     await dropdownButtonElement.click();
-  //     await page.waitForChanges();
+      listboxItems = await page.findAll(
+        'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
+      );
+      expect(listboxItems.length).toBe(2);
+      expect(listboxItems[0].textContent).toEqual('Bear');
+    });
+    it('filters dropdown contents (filter-type starts-with)', async () => {
+      const filterableDropdown = `
+      <gux-dropdown-tag filter-type="starts-with" lang="en">
+        <gux-listbox-multi aria-label="Animals">
+          <gux-option-multi value="ant">Ant</gux-option-multi>
+          <gux-option-multi value="bear">Bear</gux-option-multi>
+          <gux-option-multi value="bat">Bat</gux-option-multi>
+          <gux-option-multi value="cat">Cat</gux-option-multi>
+          <gux-option-multi value="dog">Dog</gux-option-multi>
+        </gux-listbox-multi>
+      </gux-dropdown-tag>
+    `;
+      const page = await newSparkE2EPage({ html: filterableDropdown });
+      await page.waitForChanges();
+      const dropdownButtonElement = await page.find('pierce/.gux-field');
+      await dropdownButtonElement.click();
+      await page.waitForChanges();
 
-  //     let listboxItems = await page.findAll(
-  //       'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
-  //     );
+      let listboxItems = await page.findAll(
+        'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
+      );
 
-  //     expect(listboxItems.length).toBe(5);
-  //     await page.keyboard.press('b');
-  //     await page.waitForChanges();
+      expect(listboxItems.length).toBe(5);
+      await page.keyboard.press('b');
+      await page.waitForChanges();
 
-  //     listboxItems = await page.findAll(
-  //       'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
-  //     );
-  //     expect(listboxItems.length).toBe(2);
-  //     expect(listboxItems[0].textContent).toEqual('Bear');
-  //   });
-  //   it('does not filter dropdown contents (filter-type custom)', async () => {
-  //     const filterableDropdown = `
-  //     <gux-dropdown-tag filter-type="custom" lang="en">
-  //       <gux-listbox-multi aria-label="Animals">
-  //         <gux-option-multi value="ant">Ant</gux-option-multi>
-  //         <gux-option-multi value="bear">Bear</gux-option-multi>
-  //         <gux-option-multi value="bat">Bat</gux-option-multi>
-  //         <gux-option-multi value="cat">Cat</gux-option-multi>
-  //         <gux-option-multi value="dog">Dog</gux-option-multi>
-  //       </gux-listbox-multi>
-  //     </gux-dropdown-tag>
-  //   `;
-  //     const page = await newSparkE2EPage({ html: filterableDropdown });
-  //     await page.waitForChanges();
-  //     const dropdownButtonElement = await page.find('pierce/.gux-field');
-  //     await dropdownButtonElement.click();
-  //     await page.waitForChanges();
+      listboxItems = await page.findAll(
+        'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
+      );
+      expect(listboxItems.length).toBe(2);
+      expect(listboxItems[0].textContent).toEqual('Bear');
+    });
+    it('does not filter dropdown contents (filter-type custom)', async () => {
+      const filterableDropdown = `
+      <gux-dropdown-tag filter-type="custom" lang="en">
+        <gux-listbox-multi aria-label="Animals">
+          <gux-option-multi value="ant">Ant</gux-option-multi>
+          <gux-option-multi value="bear">Bear</gux-option-multi>
+          <gux-option-multi value="bat">Bat</gux-option-multi>
+          <gux-option-multi value="cat">Cat</gux-option-multi>
+          <gux-option-multi value="dog">Dog</gux-option-multi>
+        </gux-listbox-multi>
+      </gux-dropdown-tag>
+    `;
+      const page = await newSparkE2EPage({ html: filterableDropdown });
+      await page.waitForChanges();
+      const dropdownButtonElement = await page.find('pierce/.gux-field');
+      await dropdownButtonElement.click();
+      await page.waitForChanges();
 
-  //     let listboxItems = await page.findAll(
-  //       'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
-  //     );
+      let listboxItems = await page.findAll(
+        'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
+      );
 
-  //     expect(listboxItems.length).toBe(5);
-  //     await page.keyboard.press('b');
-  //     await page.waitForChanges();
+      expect(listboxItems.length).toBe(5);
+      await page.keyboard.press('b');
+      await page.waitForChanges();
 
-  //     listboxItems = await page.findAll(
-  //       'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
-  //     );
-  //     expect(listboxItems.length).toBe(5);
-  //     expect(listboxItems[0].textContent).toEqual('Ant');
-  //   });
-  //   describe('adding option to dropdown', () => {
-  //     it('renders tag when option is added to dropdown that value set', async () => {
-  //       const { page } = await setupPage(valueSetDropdown);
-  //       let tagElements = await page.findAll('pierce/.gux-tag');
-  //       expect(tagElements.length).toBe(0);
-  //       await addNewOption(page);
-  //       await page.waitForChanges();
-  //       tagElements = await page.findAll('pierce/.gux-tag');
-  //       expect(tagElements.length).toBe(1);
-  //       expect(tagElements[0].textContent).toEqual('1');
-  //     });
-  //   });
+      listboxItems = await page.findAll(
+        'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
+      );
+      expect(listboxItems.length).toBe(5);
+      expect(listboxItems[0].textContent).toEqual('Ant');
+    });
+    describe('adding option to dropdown', () => {
+      it('renders tag when option is added to dropdown that value set', async () => {
+        const { page } = await setupPage(valueSetDropdown);
+        let tagElements = await page.findAll('pierce/.gux-tag');
+        expect(tagElements.length).toBe(0);
+        await addNewOption(page);
+        await page.waitForChanges();
+        tagElements = await page.findAll('pierce/.gux-tag');
+        expect(tagElements.length).toBe(1);
+        expect(tagElements[0].textContent).toEqual('1');
+      });
+    });
 
-  //   describe('with the create option set', () => {
-  //     it('provides the option to create items', async () => {
-  //       const { page, dropdown } = await setupPage(creatableDropdown);
-  //       await inputFilter(page, dropdown, 'bee');
-  //       const createAction = await getCreateAction(dropdown);
-  //       await a11yCheck(page);
-  //       expect(createAction).not.toBeNull();
-  //       expect(createAction).not.toHaveClass('gux-filtered');
-  //     });
+    describe('with the create option set', () => {
+      it('provides the option to create items', async () => {
+        const { page, dropdown } = await setupPage(creatableDropdown);
+        await inputFilter(page, dropdown, 'bee');
+        const createAction = await getCreateAction(dropdown);
+        await a11yCheck(page);
+        expect(createAction).not.toBeNull();
+        expect(createAction).not.toHaveClass('gux-filtered');
+      });
 
-  //     it('does not provide a create option if there is an exact match', async () => {
-  //       const { page, dropdown } = await setupPage(creatableDropdown);
-  //       await inputFilter(page, dropdown, 'cat');
-  //       const createAction = await getCreateAction(dropdown);
-  //       expect(createAction).toHaveClass('gux-filtered');
-  //     });
+      it('does not provide a create option if there is an exact match', async () => {
+        const { page, dropdown } = await setupPage(creatableDropdown);
+        await inputFilter(page, dropdown, 'cat');
+        const createAction = await getCreateAction(dropdown);
+        expect(createAction).toHaveClass('gux-filtered');
+      });
 
-  //     it('updates dropdown multi and listbox value when slot changes', async () => {
-  //       const { page, dropdown, listbox } = await setupPage(creatableDropdown);
-  //       let dropdownValue = await dropdown.getProperty('value');
-  //       let listboxValue = await listbox.getProperty('value');
-  //       let selectedItems = await page.findAll('.gux-selected');
-  //       expect(selectedItems.length).toBe(0);
-  //       expect(dropdownValue).toEqual(undefined);
-  //       expect(listboxValue).toEqual(undefined);
-  //       await addNewCustomOption(page);
-  //       selectedItems = await page.findAll('.gux-selected');
-  //       expect(selectedItems.length).toBe(1);
-  //       dropdownValue = await dropdown.getProperty('value');
-  //       listboxValue = await listbox.getProperty('value');
-  //       expect(dropdownValue).toEqual('newoption');
-  //       expect(listboxValue).toEqual('newoption');
-  //     });
-  //   });
-  // });
+      it('updates dropdown multi and listbox value when slot changes', async () => {
+        const { page, dropdown, listbox } = await setupPage(creatableDropdown);
+        let dropdownValue = await dropdown.getProperty('value');
+        let listboxValue = await listbox.getProperty('value');
+        let selectedItems = await page.findAll('.gux-selected');
+        expect(selectedItems.length).toBe(0);
+        expect(dropdownValue).toEqual(undefined);
+        expect(listboxValue).toEqual(undefined);
+        await addNewCustomOption(page);
+        selectedItems = await page.findAll('.gux-selected');
+        expect(selectedItems.length).toBe(1);
+        dropdownValue = await dropdown.getProperty('value');
+        listboxValue = await listbox.getProperty('value');
+        expect(dropdownValue).toEqual('newoption');
+        expect(listboxValue).toEqual('newoption');
+      });
+    });
+  });
 });
 
 // HELPER FUNCTIONS
