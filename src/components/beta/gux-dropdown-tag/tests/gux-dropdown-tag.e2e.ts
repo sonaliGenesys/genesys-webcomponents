@@ -301,7 +301,7 @@ describe('gux-dropdown-tag', () => {
         await page.waitForChanges();
         tagElements = await page.findAll('pierce/.gux-tag');
         expect(tagElements.length).toBe(1);
-        expect(tagElements[0].textContent).toEqual('1');
+        expect(tagElements[0].textContent).toEqual('newoption');
       });
     });
 
