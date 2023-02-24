@@ -24,10 +24,12 @@ import translationResources from './i18n/en.json';
 
 import { getSearchOption } from '../../stable/gux-listbox/gux-listbox.service';
 import { GuxFilterTypes } from '../../stable/gux-dropdown/gux-dropdown.types';
-
+/**
+ * @slot - for a gux-listbox-multi containing gux-option-multi children
+ */
 @Component({
   styleUrl: 'gux-dropdown-tag.less',
-  tag: 'gux-dropdown-tag',
+  tag: 'gux-dropdown-tag-beta',
   shadow: true
 })
 export class GuxDropdownTag {
@@ -211,7 +213,7 @@ export class GuxDropdownTag {
   }
 
   /**
-   * clear selected options when gux-dropdown-multi-tag emits event
+   * clear selected options when gux-dropdown-tag-value emits event
    */
   @Listen('tagCloseClicked')
   onClearselected(event: CustomEvent): void {
@@ -434,7 +436,6 @@ export class GuxDropdownTag {
     if (textInputLength > 0 && !this.loading) {
       const option = getSearchOption(this.listboxElement, textInput);
       if (option && this.filterType !== 'custom') {
-        // if (option) {
         const optionSlotTextContent = option.querySelector(
           '[gux-slot-container]'
         )?.textContent;
@@ -483,13 +484,14 @@ export class GuxDropdownTag {
 
   private renderFilterInputFieldText(): JSX.Element {
     if (this.expanded && this.hasTextInput()) {
+      const filterSuggestion = this.getTypeaheadText(this.textInput);
       return (
         <div class="input-container">
           <div class="gux-filter-display">
-            <span class="gux-filter-text">{this.textInput}</span>
-            <span class="gux-filter-suggestion">
-              {this.getTypeaheadText(this.textInput)}
+            <span class="gux-filter-text">
+              {filterSuggestion !== '' ? this.textInput : ''}
             </span>
+            <span class="gux-filter-suggestion">{filterSuggestion}</span>
           </div>
           <div class="input-and-dropdown-button">
             <input
@@ -523,43 +525,6 @@ export class GuxDropdownTag {
     return '20';
   }
 
-  private renderFilterInputField(): JSX.Element {
-    if (this.expanded && this.hasTextInput()) {
-      return (
-        <div
-          class="gux-field gux-input-field"
-          // <div class="gux-input-field"
-          // style={{width: this.getInputWidth() }}
-        >
-          <div class="gux-field-content">
-            <div class="gux-filter">
-              <div class="gux-filter-display">
-                <span class="gux-filter-text">{this.textInput}</span>
-                <span class="gux-filter-suggestion">
-                  {this.getTypeaheadText(this.textInput)}
-                </span>
-              </div>
-              <div class="input-and-dropdown-button">
-                <input
-                  onClick={this.fieldButtonInputClick.bind(this)}
-                  placeholder={this.placeholder || this.i18n('noSelection')}
-                  class="gux-filter-input"
-                  type="text"
-                  aria-label={this.getInputAriaLabel()}
-                  ref={el => (this.textInputElement = el)}
-                  onInput={this.filterInput.bind(this)}
-                  onKeyDown={this.filterKeydown.bind(this)}
-                  onKeyUp={this.filterKeyup.bind(this)}
-                  style={{ width: this.getInputWidth() }}
-                ></input>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) as JSX.Element;
-    }
-  }
-
   private renderPopup(): JSX.Element {
     return (
       <div slot="popup" class="gux-listbox-container">
@@ -571,18 +536,8 @@ export class GuxDropdownTag {
   private renderTarget(): JSX.Element {
     return (
       <div
-        // class={{
-        //   'gux-target-container': true,
-        //   'gux-target-container-expanded': this.expanded && this.hasTextInput(),
-        //   'gux-target-container-collapsed': !(
-        //     this.expanded && this.hasTextInput()
-        //   ),
-        //   'gux-error': this.hasError
-        // }}
         class={{
           'gux-target-container': true,
-          // 'gux-target-container-expanded': this.expanded && this.hasTextInput(),
-          'gux-target-container-collapsed': true,
           'gux-error': this.hasError
         }}
         slot="target"
@@ -609,16 +564,14 @@ export class GuxDropdownTag {
       </div>
     ) as JSX.Element;
   }
+
   private renderTargetContent(): JSX.Element {
-    // if (!(this.expanded && this.hasTextInput())) {
     return (
       <div class="gux-field-content">
         {this.value ? this.renderTag() : this.renderTargetDisplay()}
         {this.renderFilterInputFieldText()}
-        {/* {this.renderFilterInputField()} */}
       </div>
     ) as JSX.Element;
-    // }
   }
 
   private renderRadialLoading(): JSX.Element {

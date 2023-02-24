@@ -25,22 +25,10 @@ export class GuxDropdownMultiTag {
   root: HTMLElement;
 
   /**
-   * Triggered when click on remove button
-   */
-  @Event()
-  internalclearselected: EventEmitter<string>;
-
-  // @Event()
-  // tagCloseClicked: EventEmitter<string>;
-
-  /**
    * Tag is removable.
    */
   @Prop()
   disabled: boolean = false;
-
-  // @Prop()
-  // numberSelected: number = 0;
 
   @Prop()
   value: string = '';

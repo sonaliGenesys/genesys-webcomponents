@@ -14,7 +14,7 @@
 }
 
 .gux-error {
-  &.gux-target-container-collapsed .gux-field-button {
+  &.gux-target-container .gux-field-button {
     border-color: @gux-alert-red-60;
   }
 }
@@ -31,7 +31,6 @@
   width: 300px;
   min-height: 40px;
   padding: 6px 0 6px 6px;
-  // padding: 6px;
   overflow-y: scroll;
   font-family: inherit;
   font-size: 12px;
@@ -50,7 +49,6 @@
     min-width: 0;
     height: 100%;
 
-    .gux-filter,
     .gux-selected-option,
     .gux-placeholder {
       flex: 1 1 auto;
@@ -74,7 +72,6 @@
   .input-container {
     position: relative;
     display: inline-block;
-    max-width: 200px;
     padding: 1px 2px;
 
     .gux-filter-input {
@@ -85,10 +82,8 @@
 
     .gux-filter-display {
       white-space: pre;
-      // max-width:200px;
 
       .gux-filter-text {
-        max-width: 200px;
         height: 100%;
         color: @gux-black-50;
       }
@@ -114,7 +109,7 @@
   }
 }
 
-.gux-target-container-collapsed .gux-field-button {
+.gux-target-container .gux-field-button {
   .form-field-border();
 
   &:focus {
@@ -126,15 +121,9 @@
   }
 
   .gux-filter-input {
-    max-width: 200px;
+    max-width: 250px;
     background-color: inherit;
     border: none;
-
-    // max-width: inherit;
-    // min-height: 0;
-    // white-space: normal;
-    // background-color: inherit;
-    // border: none;
 
     &:focus {
       border: none;

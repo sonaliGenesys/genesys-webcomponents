@@ -1,9 +1,9 @@
 import { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newSparkE2EPage, a11yCheck } from '../../../../../tests/e2eTestUtils';
 
-describe('gux-dropdown-tag', () => {
+describe('gux-dropdown-tag-beta', () => {
   const html = `
-    <gux-dropdown-tag lang="en">
+    <gux-dropdown-tag-beta lang="en">
       <gux-listbox-multi aria-label="Animals">
         <gux-option-multi value="a">Ant</gux-option-multi>
         <gux-option-multi value="b">Bat</gux-option-multi>
@@ -15,12 +15,12 @@ describe('gux-dropdown-tag', () => {
         <gux-option-multi value="h">Horse</gux-option-multi>
         <gux-option-multi value="i">Ibis</gux-option-multi>
       </gux-listbox-multi>
-    </gux-dropdown-tag>
+    </gux-dropdown-tag-beta>
   `;
   describe('#render', () => {
     it('renders', async () => {
       const page = await newSparkE2EPage({ html });
-      const element = await page.find('gux-dropdown-tag');
+      const element = await page.find('gux-dropdown-tag-beta');
       expect(element).toHaveAttribute('hydrated');
     });
   });
@@ -50,7 +50,7 @@ describe('gux-dropdown-tag', () => {
       expect(selectedItems.length).toBe(0);
 
       const listboxItems = await page.findAll(
-        'gux-dropdown-tag gux-listbox-multi gux-option-multi'
+        'gux-dropdown-tag-beta gux-listbox-multi gux-option-multi'
       );
       await listboxItems[0].click();
       await page.waitForChanges();
@@ -76,7 +76,7 @@ describe('gux-dropdown-tag', () => {
       await page.waitForChanges();
 
       const listboxItems = await page.findAll(
-        'gux-dropdown-tag gux-listbox-multi gux-option-multi'
+        'gux-dropdown-tag-beta gux-listbox-multi gux-option-multi'
       );
       await listboxItems[0].click();
       await listboxItems[1].click();
@@ -129,7 +129,9 @@ describe('gux-dropdown-tag', () => {
       const dropdownButtonElement = await page.find('pierce/.gux-field');
       await dropdownButtonElement.press('ArrowDown');
 
-      const listbox = await page.find('gux-dropdown-tag gux-listbox-multi');
+      const listbox = await page.find(
+        'gux-dropdown-tag-beta gux-listbox-multi'
+      );
       const focusEl = await page.find(':focus');
       expect(listbox.outerHTML).toContain(focusEl.outerHTML);
     });
@@ -140,9 +142,11 @@ describe('gux-dropdown-tag', () => {
       const dropdownButtonElement = await page.find('pierce/.gux-field');
       await dropdownButtonElement.press('ArrowDown');
 
-      const listbox = await page.find('gux-dropdown-tag gux-listbox-multi');
+      const listbox = await page.find(
+        'gux-dropdown-tag-beta gux-listbox-multi'
+      );
       const listboxItems = await page.findAll(
-        'gux-dropdown-tag gux-listbox-multi gux-option-multi'
+        'gux-dropdown-tag-beta gux-listbox-multi gux-option-multi'
       );
 
       let activeItem = await listbox.findAll('.gux-active');
@@ -163,7 +167,7 @@ describe('gux-dropdown-tag', () => {
       await dropdownButtonElement.press('ArrowDown');
 
       let listboxItems = await page.findAll(
-        'gux-dropdown-tag gux-listbox-multi gux-option-multi'
+        'gux-dropdown-tag-beta gux-listbox-multi gux-option-multi'
       );
       let selectedItems = await page.findAll('.gux-selected');
       expect(selectedItems.length).toBe(0);
@@ -173,7 +177,7 @@ describe('gux-dropdown-tag', () => {
 
       selectedItems = await page.findAll('.gux-selected');
       listboxItems = await page.findAll(
-        'gux-dropdown-tag gux-listbox-multi gux-option-multi'
+        'gux-dropdown-tag-beta gux-listbox-multi gux-option-multi'
       );
 
       expect(selectedItems.length).toBe(1);
@@ -198,7 +202,7 @@ describe('gux-dropdown-tag', () => {
     // remove filterable example in V4 (COMUI-1369)
     it('filters dropdown contents (filterable)', async () => {
       const filterableDropdown = `
-      <gux-dropdown-tag filterable lang="en">
+      <gux-dropdown-tag-beta filterable lang="en">
         <gux-listbox-multi aria-label="Animals">
           <gux-option-multi value="ant">Ant</gux-option-multi>
           <gux-option-multi value="bear">Bear</gux-option-multi>
@@ -206,7 +210,7 @@ describe('gux-dropdown-tag', () => {
           <gux-option-multi value="cat">Cat</gux-option-multi>
           <gux-option-multi value="dog">Dog</gux-option-multi>
         </gux-listbox-multi>
-      </gux-dropdown-tag>
+      </gux-dropdown-tag-beta>
     `;
       const page = await newSparkE2EPage({ html: filterableDropdown });
       await page.waitForChanges();
@@ -215,7 +219,7 @@ describe('gux-dropdown-tag', () => {
       await page.waitForChanges();
 
       let listboxItems = await page.findAll(
-        'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
+        'gux-dropdown-tag-beta gux-listbox-multi gux-option-multi:not(.gux-filtered)'
       );
 
       expect(listboxItems.length).toBe(5);
@@ -223,14 +227,14 @@ describe('gux-dropdown-tag', () => {
       await page.waitForChanges();
 
       listboxItems = await page.findAll(
-        'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
+        'gux-dropdown-tag-beta gux-listbox-multi gux-option-multi:not(.gux-filtered)'
       );
       expect(listboxItems.length).toBe(2);
       expect(listboxItems[0].textContent).toEqual('Bear');
     });
     it('filters dropdown contents (filter-type starts-with)', async () => {
       const filterableDropdown = `
-      <gux-dropdown-tag filter-type="starts-with" lang="en">
+      <gux-dropdown-tag-beta filter-type="starts-with" lang="en">
         <gux-listbox-multi aria-label="Animals">
           <gux-option-multi value="ant">Ant</gux-option-multi>
           <gux-option-multi value="bear">Bear</gux-option-multi>
@@ -238,7 +242,7 @@ describe('gux-dropdown-tag', () => {
           <gux-option-multi value="cat">Cat</gux-option-multi>
           <gux-option-multi value="dog">Dog</gux-option-multi>
         </gux-listbox-multi>
-      </gux-dropdown-tag>
+      </gux-dropdown-tag-beta>
     `;
       const page = await newSparkE2EPage({ html: filterableDropdown });
       await page.waitForChanges();
@@ -247,7 +251,7 @@ describe('gux-dropdown-tag', () => {
       await page.waitForChanges();
 
       let listboxItems = await page.findAll(
-        'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
+        'gux-dropdown-tag-beta gux-listbox-multi gux-option-multi:not(.gux-filtered)'
       );
 
       expect(listboxItems.length).toBe(5);
@@ -255,14 +259,14 @@ describe('gux-dropdown-tag', () => {
       await page.waitForChanges();
 
       listboxItems = await page.findAll(
-        'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
+        'gux-dropdown-tag-beta gux-listbox-multi gux-option-multi:not(.gux-filtered)'
       );
       expect(listboxItems.length).toBe(2);
       expect(listboxItems[0].textContent).toEqual('Bear');
     });
     it('does not filter dropdown contents (filter-type custom)', async () => {
       const filterableDropdown = `
-      <gux-dropdown-tag filter-type="custom" lang="en">
+      <gux-dropdown-tag-beta filter-type="custom" lang="en">
         <gux-listbox-multi aria-label="Animals">
           <gux-option-multi value="ant">Ant</gux-option-multi>
           <gux-option-multi value="bear">Bear</gux-option-multi>
@@ -270,7 +274,7 @@ describe('gux-dropdown-tag', () => {
           <gux-option-multi value="cat">Cat</gux-option-multi>
           <gux-option-multi value="dog">Dog</gux-option-multi>
         </gux-listbox-multi>
-      </gux-dropdown-tag>
+      </gux-dropdown-tag-beta>
     `;
       const page = await newSparkE2EPage({ html: filterableDropdown });
       await page.waitForChanges();
@@ -279,7 +283,7 @@ describe('gux-dropdown-tag', () => {
       await page.waitForChanges();
 
       let listboxItems = await page.findAll(
-        'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
+        'gux-dropdown-tag-beta gux-listbox-multi gux-option-multi:not(.gux-filtered)'
       );
 
       expect(listboxItems.length).toBe(5);
@@ -287,7 +291,7 @@ describe('gux-dropdown-tag', () => {
       await page.waitForChanges();
 
       listboxItems = await page.findAll(
-        'gux-dropdown-tag gux-listbox-multi gux-option-multi:not(.gux-filtered)'
+        'gux-dropdown-tag-beta gux-listbox-multi gux-option-multi:not(.gux-filtered)'
       );
       expect(listboxItems.length).toBe(5);
       expect(listboxItems[0].textContent).toEqual('Ant');
@@ -352,7 +356,7 @@ async function setupPage(html: string): Promise<{
 }> {
   const page = await newSparkE2EPage({ html });
   await page.waitForChanges();
-  const dropdown = await page.find('gux-dropdown-tag');
+  const dropdown = await page.find('gux-dropdown-tag-beta');
   const listbox = await page.find('gux-listbox-multi');
   const listboxOptions = await page.findAll('gux-option-multi');
   return { page, dropdown, listbox, listboxOptions };
@@ -400,23 +404,23 @@ async function addNewCustomOption(page: E2EPage): Promise<void> {
 }
 
 const creatableDropdown = `
-<gux-dropdown-tag lang="en">
+<gux-dropdown-tag-beta lang="en">
   <gux-listbox-multi aria-label="Animals">
     <gux-create-option slot="create"></gux-create-option>
     <gux-option-multi value="ant">Ant</gux-option-multi>
     <gux-option-multi value="bear">Bear</gux-option-multi>
     <gux-option-multi value="cat">Cat</gux-option-multi>
   </gux-listbox-multi>
-</gux-dropdown-tag>
+</gux-dropdown-tag-beta>
 `;
 
 const valueSetDropdown = `
-<gux-dropdown-tag lang="en" value="newoption">
+<gux-dropdown-tag-beta lang="en" value="newoption">
   <gux-listbox-multi aria-label="Animals">
     <gux-create-option slot="create"></gux-create-option>
     <gux-option-multi value="ant">Ant</gux-option-multi>
     <gux-option-multi value="bear">Bear</gux-option-multi>
     <gux-option-multi value="cat">Cat</gux-option-multi>
   </gux-listbox-multi>
-</gux-dropdown-tag>
+</gux-dropdown-tag-beta>
 `;

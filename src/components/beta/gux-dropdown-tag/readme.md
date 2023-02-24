@@ -40,6 +40,13 @@ Type: `Promise<string[]>`
 
 
 
+## Slots
+
+| Slot | Description                                                  |
+| ---- | ------------------------------------------------------------ |
+|      | for a gux-listbox-multi containing gux-option-multi children |
+
+
 ## Dependencies
 
 ### Depends on
@@ -52,12 +59,12 @@ Type: `Promise<string[]>`
 ### Graph
 ```mermaid
 graph TD;
-  gux-dropdown-tag --> gux-dropdown-tag-value
-  gux-dropdown-tag --> gux-icon
-  gux-dropdown-tag --> gux-radial-loading
-  gux-dropdown-tag --> gux-popup
+  gux-dropdown-tag-beta --> gux-dropdown-tag-value
+  gux-dropdown-tag-beta --> gux-icon
+  gux-dropdown-tag-beta --> gux-radial-loading
+  gux-dropdown-tag-beta --> gux-popup
   gux-dropdown-tag-value --> gux-icon
-  style gux-dropdown-tag fill:#f9f,stroke:#333,stroke-width:4px
+  style gux-dropdown-tag-beta fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

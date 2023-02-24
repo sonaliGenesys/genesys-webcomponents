@@ -1,6 +1,9 @@
-<h1>gux-dropdown-tag</h1>
+<h1>gux-dropdown-tag-beta</h1>
 <form onchange="notify(event)" oninput="notify(event)">
-  <gux-dropdown-tag filter-type="starts-with" placeholder="Select a country">
+  <gux-dropdown-tag-beta
+    filter-type="starts-with"
+    placeholder="Select a country"
+  >
     <gux-listbox-multi aria-label="Countries">
       <gux-option-multi value="AFG">Afghanistan</gux-option-multi>
       <gux-option-multi value="ALA">Åland Islands</gux-option-multi>
@@ -283,10 +286,10 @@
       <gux-option-multi value="ZMB">Zambia</gux-option-multi>
       <gux-option-multi value="ZWE">Zimbabwe</gux-option-multi>
     </gux-listbox-multi>
-  </gux-dropdown-tag>
+  </gux-dropdown-tag-beta>
 
   <h2>Value Set</h2>
-  <gux-dropdown-tag value="b,f">
+  <gux-dropdown-tag-beta value="b,f">
     <gux-listbox-multi aria-label="Animals">
       <gux-option-multi value="a" disabled>Ant</gux-option-multi>
       <gux-option-multi value="b">Bat</gux-option-multi>
@@ -298,10 +301,10 @@
       <gux-option-multi value="h" disabled>Horse</gux-option-multi>
       <gux-option-multi value="i" disabled>Ibis</gux-option-multi>
     </gux-listbox-multi>
-  </gux-dropdown-tag>
+  </gux-dropdown-tag-beta>
 
   <h2>No Value Set</h2>
-  <gux-dropdown-tag>
+  <gux-dropdown-tag-beta>
     <gux-listbox-multi aria-label="Animals" selection-limit="4">
       <gux-option-multi value="a">Ant</gux-option-multi>
       <gux-option-multi value="b">Bat</gux-option-multi>
@@ -313,10 +316,10 @@
       <gux-option-multi value="h">Horse</gux-option-multi>
       <gux-option-multi value="i">Ibis</gux-option-multi>
     </gux-listbox-multi>
-  </gux-dropdown-tag>
+  </gux-dropdown-tag-beta>
 
   <h2>Unknown Value Set</h2>
-  <gux-dropdown-tag value="j">
+  <gux-dropdown-tag-beta value="j">
     <gux-listbox-multi id="unknown-listbox" aria-label="Animals">
       <gux-option-multi value="a">Ant</gux-option-multi>
       <gux-option-multi value="b">Bat</gux-option-multi>
@@ -328,7 +331,7 @@
       <gux-option-multi value="h">Horse</gux-option-multi>
       <gux-option-multi value="i">Ibis</gux-option-multi>
     </gux-listbox-multi>
-  </gux-dropdown-tag>
+  </gux-dropdown-tag-beta>
 
   <gux-button
     onclick="(function() {
@@ -348,27 +351,27 @@
   >
 
   <h2>Disabled</h2>
-  <gux-dropdown-tag value="a" disabled>
+  <gux-dropdown-tag-beta value="a" disabled>
     <gux-listbox-multi aria-label="Animals">
       <gux-option-multi value="a">Ant</gux-option-multi>
       <gux-option-multi value="b">Bat</gux-option-multi>
       <gux-option-multi value="c">Cat</gux-option-multi>
       <gux-option-multi value="d">Dog</gux-option-multi>
     </gux-listbox-multi>
-  </gux-dropdown-tag>
+  </gux-dropdown-tag-beta>
 
   <h2>Placeholder</h2>
-  <gux-dropdown-tag placeholder="Select an animal">
+  <gux-dropdown-tag-beta placeholder="Select an animal">
     <gux-listbox-multi aria-label="Animals">
       <gux-option-multi value="a">Ant</gux-option-multi>
       <gux-option-multi value="b">Bat</gux-option-multi>
       <gux-option-multi value="c">Cat</gux-option-multi>
       <gux-option-multi value="d">Dog</gux-option-multi>
     </gux-listbox-multi>
-  </gux-dropdown-tag>
+  </gux-dropdown-tag-beta>
 
   <h2>Long List</h2>
-  <gux-dropdown-tag placeholder="Select an animal">
+  <gux-dropdown-tag-beta placeholder="Select an animal">
     <gux-listbox-multi aria-label="Animals">
       <gux-option-multi value="a">Ant</gux-option-multi>
       <gux-option-multi value="b">Bat</gux-option-multi>
@@ -397,10 +400,10 @@
       <gux-option-multi value="y">Yak</gux-option-multi>
       <gux-option-multi value="z">Zebra</gux-option-multi>
     </gux-listbox-multi>
-  </gux-dropdown-tag>
+  </gux-dropdown-tag-beta>
 
   <h2>Set list max height</h2>
-  <gux-dropdown-tag placeholder="Select an animal">
+  <gux-dropdown-tag-beta placeholder="Select an animal">
     <gux-listbox-multi style="max-height: 100px" aria-label="Animals">
       <gux-option-multi value="a">Ant</gux-option-multi>
       <gux-option-multi value="b">Bat</gux-option-multi>
@@ -429,11 +432,11 @@
       <gux-option-multi value="y">Yak</gux-option-multi>
       <gux-option-multi value="z">Zebra</gux-option-multi>
     </gux-listbox-multi>
-  </gux-dropdown-tag>
+  </gux-dropdown-tag-beta>
 
   <h2>Enabling user creation of new items</h2>
 
-  <gux-dropdown-tag
+  <gux-dropdown-tag-beta
     id="createDropdownMultiExample"
     placeholder="Your favorite animal"
   >
@@ -443,19 +446,19 @@
       <gux-option-multi value="bat">Bat</gux-option-multi>
       <gux-option-multi value="cat">Cat</gux-option-multi>
     </gux-listbox-multi>
-  </gux-dropdown-tag>
+  </gux-dropdown-tag-beta>
 
   <h2>Loading Examples</h2>
 
   <h3>Loading a list</h3>
-  <gux-dropdown-tag id="loading-1" loading>
+  <gux-dropdown-tag-beta id="loading-1" loading>
     <gux-listbox-multi aria-label="Animals"> </gux-listbox-multi>
-  </gux-dropdown-tag>
+  </gux-dropdown-tag-beta>
 
   <h3>Loading a filterable list</h3>
-  <gux-dropdown-tag id="loading-2" filter-type="starts-with" loading>
+  <gux-dropdown-tag-beta id="loading-2" filter-type="starts-with" loading>
     <gux-listbox-multi aria-label="Animals"> </gux-listbox-multi>
-  </gux-dropdown-tag>
+  </gux-dropdown-tag-beta>
 </form>
 
 <style
