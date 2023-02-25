@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`gux-dropdown #render should render as expected 1`] = `
-<gux-dropdown-tag>
+<gux-dropdown-tag-beta>
   <mock:shadow-root>
     <div class="gux-dropdown-container">
       <gux-popup>
-        <div class="gux-target-container gux-target-container-collapsed" slot="target">
+        <div class="gux-target-container" slot="target">
           <button aria-expanded="false" aria-haspopup="listbox" class="gux-field gux-field-button" type="button">
             <div class="gux-field-content">
               <div class="gux-placeholder">
@@ -45,5 +45,5 @@ exports[`gux-dropdown #render should render as expected 1`] = `
       </div>
     </gux-option-multi>
   </gux-listbox-multi>
-</gux-dropdown-tag>
+</gux-dropdown-tag-beta>
 `;

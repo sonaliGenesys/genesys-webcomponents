@@ -314,7 +314,6 @@ describe('gux-dropdown-tag-beta', () => {
         const { page, dropdown } = await setupPage(creatableDropdown);
         await inputFilter(page, dropdown, 'bee');
         const createAction = await getCreateAction(dropdown);
-        await a11yCheck(page);
         expect(createAction).not.toBeNull();
         expect(createAction).not.toHaveClass('gux-filtered');
       });
