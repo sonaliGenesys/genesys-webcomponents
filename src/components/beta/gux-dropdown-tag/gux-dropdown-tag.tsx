@@ -496,7 +496,6 @@ export class GuxDropdownTag {
           <div class="input-and-dropdown-button">
             <input
               onClick={this.fieldButtonInputClick.bind(this)}
-              // placeholder={!this.value && (this.placeholder || this.i18n('noSelection'))}
               class="gux-filter-input"
               type="text"
               aria-label={this.getInputAriaLabel()}
