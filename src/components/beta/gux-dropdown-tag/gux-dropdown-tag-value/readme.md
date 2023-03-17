@@ -16,10 +16,9 @@
 
 ## Events
 
-| Event             | Description                             | Type                  |
-| ----------------- | --------------------------------------- | --------------------- |
-| `tagClicked`      | Fired when tag is clicked.              | `CustomEvent<string>` |
-| `tagCloseClicked` | Fired when tag close button is clicked. | `CustomEvent<string>` |
+| Event             | Description                           | Type                  |
+| ----------------- | ------------------------------------- | --------------------- |
+| `tagCloseClicked` | Triggered when click on remove button | `CustomEvent<string>` |
 
 
 ## Dependencies

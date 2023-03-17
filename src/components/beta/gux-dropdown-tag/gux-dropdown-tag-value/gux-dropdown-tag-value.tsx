@@ -25,6 +25,12 @@ export class GuxDropdownMultiTag {
   root: HTMLElement;
 
   /**
+   * Triggered when click on remove button
+   */
+  @Event()
+  tagCloseClicked: EventEmitter<string>;
+
+  /**
    * Tag is removable.
    */
   @Prop()
@@ -38,18 +44,6 @@ export class GuxDropdownMultiTag {
 
   @State()
   label: string = '';
-
-  /**
-   * Fired when tag is clicked.
-   */
-  @Event()
-  tagClicked: EventEmitter<string>;
-
-  /**
-   * Fired when tag close button is clicked.
-   */
-  @Event()
-  tagCloseClicked: EventEmitter<string>;
 
   @Listen('keydown')
   onKeyDown(event: KeyboardEvent): void {

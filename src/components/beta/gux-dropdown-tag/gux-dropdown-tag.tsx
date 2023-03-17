@@ -19,10 +19,7 @@ import simulateNativeEvent from '../../../utils/dom/simulate-native-event';
 import { afterNextRender } from '../../../utils/dom/after-next-render';
 import { onInputDisabledStateChange } from '../../../utils/dom/on-input-disabled-state-change';
 import { trackComponent } from '../../../usage-tracking';
-
 import translationResources from './i18n/en.json';
-
-import { getSearchOption } from '../../stable/gux-listbox/gux-listbox.service';
 import { GuxFilterTypes } from '../../stable/gux-dropdown/gux-dropdown.types';
 /**
  * @slot - for a gux-listbox-multi containing gux-option-multi children
@@ -146,12 +143,10 @@ export class GuxDropdownTag {
     }
 
     const selectedListboxOptionElement = this.getOptionElementByValue(newValue);
-
     if (selectedListboxOptionElement) {
       this.listboxElement.value = newValue;
       return;
     }
-
     this.value = undefined;
   }
 
@@ -227,16 +222,13 @@ export class GuxDropdownTag {
       this.listboxElement.value = this.value;
     }
     this.fieldButtonElement.focus();
-
     this.expanded = this.value ? true : false;
   }
 
   removeValue(value: string, clearValue: string): string {
     const arrayElements = value.split(',');
     const index = arrayElements.indexOf(clearValue);
-
     if (index !== -1) arrayElements.splice(index, 1);
-
     return arrayElements.toString();
   }
 
@@ -329,12 +321,15 @@ export class GuxDropdownTag {
     const listboxOptionElements = Array.from(
       this.root.querySelectorAll('gux-option-multi')
     );
-
     const values = value ? value.split(',') : undefined;
     if (values) {
-      return listboxOptionElements.filter(element =>
-        values.includes(element.value)
-      );
+      const selectedOption: HTMLGuxOptionElement[] = [];
+      values.forEach(value => {
+        selectedOption.push(
+          listboxOptionElements.find(element => element.value == value)
+        );
+      });
+      return selectedOption;
     }
     return;
   }
@@ -429,30 +424,16 @@ export class GuxDropdownTag {
       simulateNativeEvent(this.root, 'input');
       simulateNativeEvent(this.root, 'change');
     }
-  }
-
-  private getTypeaheadText(textInput: string): string {
-    const textInputLength = textInput.length;
-    if (textInputLength > 0 && !this.loading) {
-      const option = getSearchOption(this.listboxElement, textInput);
-      if (option && this.filterType !== 'custom') {
-        const optionSlotTextContent = option.querySelector(
-          '[gux-slot-container]'
-        )?.textContent;
-        return optionSlotTextContent?.substring(textInputLength);
-      }
-
-      return '';
-    }
+    this.onClickOutside();
   }
 
   private renderTargetDisplay(): JSX.Element {
-    return (
-      <div class="gux-placeholder">
-        {!(this.expanded && this.hasTextInput()) &&
-          (this.placeholder || this.i18n('noSelection'))}
-      </div>
-    ) as JSX.Element;
+    if (!(this.expanded && this.hasTextInput()))
+      return (
+        <div class="gux-placeholder">
+          {this.placeholder || this.i18n('noSelection')}
+        </div>
+      ) as JSX.Element;
   }
 
   private getInputAriaLabel(): string {
@@ -468,31 +449,28 @@ export class GuxDropdownTag {
 
     if (selectedListboxOptionElement?.length) {
       const optionsValue = [];
-      for (const product of selectedListboxOptionElement) {
-        optionsValue.push(
-          <gux-dropdown-tag-value
-            disabled={this.disabled}
-            option-selected={product.textContent}
-            value={product.value}
-          ></gux-dropdown-tag-value>
-        );
+      for (const option of selectedListboxOptionElement) {
+        const selectedOption = option
+          .getElementsByClassName('gux-option')
+          .item(0);
+        if (selectedOption) {
+          optionsValue.push(
+            <gux-dropdown-tag-value
+              disabled={this.disabled}
+              option-selected={selectedOption.textContent}
+              value={option.value}
+            ></gux-dropdown-tag-value>
+          );
+        }
       }
-
       return optionsValue as JSX.Element[];
     }
   }
 
   private renderFilterInputFieldText(): JSX.Element {
     if (this.expanded && this.hasTextInput()) {
-      const filterSuggestion = this.getTypeaheadText(this.textInput);
       return (
         <div class="input-container">
-          <div class="gux-filter-display">
-            <span class="gux-filter-text">
-              {filterSuggestion !== '' ? this.textInput : ''}
-            </span>
-            <span class="gux-filter-suggestion">{filterSuggestion}</span>
-          </div>
           <div class="input-and-dropdown-button">
             <input
               onClick={this.fieldButtonInputClick.bind(this)}
