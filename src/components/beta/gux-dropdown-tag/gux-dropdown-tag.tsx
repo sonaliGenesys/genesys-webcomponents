@@ -450,14 +450,17 @@ export class GuxDropdownTag {
     if (selectedListboxOptionElement?.length) {
       const optionsValue = [];
       for (const option of selectedListboxOptionElement) {
-        const selectedOption = option
-          .getElementsByClassName('gux-option')
-          .item(0);
-        if (selectedOption) {
+        if (option) {
+          const selectedOption = option
+            .getElementsByClassName('gux-option')
+            .item(0);
+          const text = selectedOption
+            ? selectedOption.textContent
+            : option.textContent;
           optionsValue.push(
             <gux-dropdown-tag-value
               disabled={this.disabled}
-              option-selected={selectedOption.textContent}
+              option-selected={text}
               value={option.value}
             ></gux-dropdown-tag-value>
           );

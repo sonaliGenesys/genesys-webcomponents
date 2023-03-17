@@ -57,11 +57,13 @@ describe('gux-dropdown-tag-beta', () => {
       selectedItems = await page.findAll('.gux-selected');
       expect(selectedItems.length).toBe(1);
 
+      await dropdownButtonElement.click();
       await listboxItems[1].click();
       await page.waitForChanges();
       selectedItems = await page.findAll('.gux-selected');
       expect(selectedItems.length).toBe(2);
 
+      await dropdownButtonElement.click();
       await listboxItems[0].click();
       await page.waitForChanges();
       selectedItems = await page.findAll('.gux-selected');
@@ -79,7 +81,9 @@ describe('gux-dropdown-tag-beta', () => {
         'gux-dropdown-tag-beta gux-listbox-multi gux-option-multi'
       );
       await listboxItems[0].click();
+      await dropdownButtonElement.click();
       await listboxItems[1].click();
+      await dropdownButtonElement.click();
       await listboxItems[2].click();
       await page.waitForChanges();
       let selectedItems = await page.findAll('.gux-selected');
@@ -87,6 +91,7 @@ describe('gux-dropdown-tag-beta', () => {
 
       let removeButton = await page.findAll('pierce/.gux-tag-remove-button');
       expect(removeButton.length).toBe(3);
+      await dropdownButtonElement.click();
       await removeButton[0].click();
       await page.waitForChanges();
       selectedItems = await page.findAll('.gux-selected');
@@ -183,6 +188,7 @@ describe('gux-dropdown-tag-beta', () => {
       expect(selectedItems.length).toBe(1);
       expect(selectedItems[0].outerHTML).toContain(listboxItems[0].outerHTML);
 
+      await dropdownButtonElement.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
@@ -191,6 +197,7 @@ describe('gux-dropdown-tag-beta', () => {
       selectedItems = await page.findAll('.gux-selected');
       expect(selectedItems.length).toBe(2);
 
+      await dropdownButtonElement.press('ArrowDown');
       await page.keyboard.press('Enter');
       await page.waitForChanges();
 
